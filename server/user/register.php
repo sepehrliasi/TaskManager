@@ -15,14 +15,23 @@ if (!$conn) {
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Inserting data into database
-$sql = "INSERT INTO users (email, password)
-VALUES ('$email', '$password')";
+$sqlvalidation = "SELECT * FROM users WHERE email='$email'";
+$result = mysqli_query($conn, $sqlvalidation);
 
-if (mysqli_query($conn, $sql)) {
-    echo "Registration successful!";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+if (mysqli_num_rows($result) > 0) {
+	echo "This email has been used before.. please use another email!";
+}
+else {
+	// Inserting data into database
+    $sql = "INSERT INTO users (email, password)
+    VALUES ('$email', '$password')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Registration successful!";
+    }
+    else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 }
 
 mysqli_close($conn);
