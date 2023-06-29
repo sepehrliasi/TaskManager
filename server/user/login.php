@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-include "confdb.php";
+include "/server/database/confdb.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
