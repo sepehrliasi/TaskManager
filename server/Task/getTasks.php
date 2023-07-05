@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/confdb.php";
 
 $db= $conn;
-$tableName="Tasks";
+$tableName="tasks";
 $columns= ['title', 'description', 'begin_time', 'deadline', 'priority', 'isComplete'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
@@ -24,7 +24,7 @@ if($result1== true){
        $taskIDs= $row1;
 
        $columnName = implode(", ", $columns);
-       $query = "SELECT ".$columnName." FROM $tableName"." ORDER BY taskid DESC";
+       $query = "SELECT * FROM tasks WHERE EXISTS (Select * from userTasks where tasks.taskid = userTasks.taskid and userTasks.UserID = ".$_SESSION['userid'].") ORDER BY taskid DESC";
        $result = $db->query($query);
        
        
