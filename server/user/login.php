@@ -10,8 +10,8 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) === 1) {
 	$row = mysqli_fetch_assoc($result);
-    $_SESSION['email'] = $row['email'];
-    $_SESSION['userid'] = $row['userid'];
+    $_SESSION['email'] = $row['Email'];
+    $_SESSION['userid'] = $row['UserID'];
     header("Location: dashboard.html");
 	exit();
 } else{

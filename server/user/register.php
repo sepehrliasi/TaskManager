@@ -28,6 +28,7 @@ else {
 
     if (mysqli_query($conn, $sql)) {
         echo "Registration successful!";
+        header("Location: /TaskManager/client/user/login.html");
     }
     else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
