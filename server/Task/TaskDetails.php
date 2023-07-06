@@ -1,6 +1,7 @@
 <?php
 session_start();
 include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
+include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getDependencies.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,8 +76,68 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
                 <a href="/TaskManager/server/task/DependencyTasks.php?id=<?php echo $fetchData['taskid'] ?>">
                     <button type="submit" class="btn btn-dark">Add Dependency</button>
                 </a>
-            <hr>
             <?php } ?>
+
+            <table class="table table-dark table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Row number</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Begin Date</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php
+                        if(is_array($fetchDep)){      
+                        $sn=1;
+                        foreach($fetchDep as $data){
+                    ?>
+                        <tr>
+                        <td><?php echo $sn; ?></td>
+                        <td><?php echo $data['title']??''; ?></td>
+                        <td><?php echo $data['description']??''; ?></td>
+                        <td><?php echo $data['beginDate']??''; ?></td>
+                        <td><?php echo $data['deadline']??''; ?></td>
+                        <td>
+                            <div id="actions" style="display: flex; justify-content:space-between;">
+                                <div style="display: flex; justify-content:space-between;">
+                                    <a href="/TaskManager/server/database/ToggleStatus.php?id=<?php echo $data['taskid'] ?>">
+                                        <button type="submit" class="btn btn-info">
+                                            <?php if ($data['isComplete'] == true){
+                                                echo "Completed";
+                                                }else{ echo "Ongoing";
+                                            }; ?>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <th>
+                            <div style="display: flex; justify-content:space-between;">
+                                <a href="/TaskManager/server/database/RemoveDependency.php?id1=<?php echo $_GET['id'] ?>&id2=<?php echo $data['taskid'] ?>">
+                                    <button class="btn btn-light">Remove</button>
+                                </a>
+                            </div>
+                        </th>
+                       </tr>
+                       <?php
+                        $sn++;
+                        }}else{ ?>
+                            <tr>
+                            <td colspan="8">
+                                <?php echo $fetchDep; ?>
+                            </td>
+                        <tr>
+                      <?php
+                      }?>
+                </tbody>
+            </table>
+
             <label for="add_user"><b>Add another user to task</b></label>
             <form action="/TaskManager/server/database/AddUser.php?id=<?php echo $fetchData['taskid'] ?>" method="post">
                 <input id="email" type="email" class="form-control" placeholder="Enter Email" name="email" required>

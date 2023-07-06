@@ -35,7 +35,7 @@ include("getTasks.php");
 
     <div class="container-sm p-4 my-3 bg-dark text-white" style="border-radius: 5px;">
         <div class="container my-5">
-            <h3>📌My Tasks</h3>
+            <h3>📌Choose a task</h3>
             <hr>
             <table class="table table-dark table-striped table-bordered table-hover">
                 <thead>
@@ -78,7 +78,7 @@ include("getTasks.php");
                         </td>
                         <th>
                             <div style="display: flex; justify-content:space-between;">
-                                <a href="/TaskManager/server/database/AddDependency.php?id1=<?php echo $_GET['id'] ?>id2=<?php echo $data['taskid'] ?>">
+                                <a href="/TaskManager/server/database/AddDependency.php?id1=<?php echo $_GET['id'] ?>&id2=<?php echo $data['taskid'] ?>">
                                     <button class="btn btn-light">Choose</button>
                                 </a>
                             </div>
@@ -97,6 +97,7 @@ include("getTasks.php");
                 </tbody>
             </table>
         </div>
+        <p>Feedback: <?php if(isset($_SESSION['dep'])){ echo $_SESSION['dep'];} ?></p>
         <hr>
     </div>
 </body>

@@ -10,12 +10,13 @@ if ($task1 == $task2){
     $_SESSION['dep'] = "Cannot add dependency to the same task!";
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }else {
-    $sql = "INSERT INTO taskdependencies values ('$task1', $task2')";
+    $sql = "INSERT INTO taskdependencies (parentTask, childTask) values ('$task1', '$task2')";
     if (mysqli_query($conn, $sql)){
         $_SESSION['dep'] = "Dependency successfully added!";
     }else {
         $_SESSION['dep'] = "Database Error!";
     }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 ?>
