@@ -75,10 +75,10 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
 
             <div id="actions" style="display: flex; justify-content:space-between;">
                 <div style="display: flex; justify-content:space-between;">
-                    <a href="/TaskManager/server/Task/EditTask.php?id=<?php echo $data['taskid'] ?>">
+                    <a href="/TaskManager/server/Task/EditTask.php?id=<?php echo $fetchData['taskid'] ?>">
                         <button class="btn btn-warning">Edit</button>
                     </a>
-                    <a href="/TaskManager/server/database/DeleteTask.php?id=<?php echo $data['taskid'] ?>">
+                    <a href="/TaskManager/server/database/DeleteTask.php?id=<?php echo $fetchData['taskid'] ?>">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </a>
                 </div>
