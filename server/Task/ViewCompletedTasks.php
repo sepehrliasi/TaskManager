@@ -1,6 +1,6 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/PriorityFilter.php";
+include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/CompletedTasks.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

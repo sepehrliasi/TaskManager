@@ -109,6 +109,9 @@ include("getTasks.php");
             <a href="/TaskManager/server/Task/viewTasksPriority.php">
                 <button class="btn btn-secondary">Filter by <b style="color: chartreuse;">Priority</b></button>
             </a>
+            <a href="/TaskManager/server/Task/viewCompletedTasks.php">
+                <button class="btn btn-secondary"><b style="color: chartreuse;">Completed</b> tasks</button>
+            </a>
         </div>
     </div>
 </body>
