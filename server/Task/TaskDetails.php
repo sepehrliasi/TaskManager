@@ -51,7 +51,7 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
             <p name="deadline"><?php echo $fetchData['deadline']??''; ?></p>
             <hr>
             <label for="notification_date"><b>Notification date</b></label>
-            <p name="notification_date"><?php echo $dafetchDatata['notifDate']??''; ?></p>
+            <p name="notification_date"><?php echo $fetchData['notifDate']??''; ?></p>
             <hr>
             <label for="priority"><b>Priority</b></label>
             <p name="priority"><?php echo $fetchData['priority']??''; ?></p>

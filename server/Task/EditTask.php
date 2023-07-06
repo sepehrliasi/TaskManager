@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"><b style="color: darkslategrey ;">Edit Task</b></h3>
                   <hr>
-                  <form class="needs-validation" onsubmit="validate(form)" novalidate action="/TaskManager/server/database/TaskEdit.php" method="post">
+                  <form class="needs-validation" onsubmit="validate(form)" novalidate action="/TaskManager/server/database/TaskEdit.php?id=<?php echo $fetchData['taskid'] ?>" method="post">
       
                     <div class="row">
                         <div class="col-md-6 mb-4">
