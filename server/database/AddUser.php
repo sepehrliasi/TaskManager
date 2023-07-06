@@ -1,4 +1,5 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/confdb.php";
 
 $db= $conn;
@@ -21,10 +22,12 @@ $email = $_POST['email'];
             $userid = $row['UserID'];
             $sql = "INSERT INTO userTasks (UserID, taskid) VALUES ('$userid', '$taskid')";
             $result = $db->query($sql);
+            header("Location: /TaskManager/server/Task/TaskDetails.php?id=".$taskid."?UserAdded");
+            $_SESSION['msg'] = "User Successfully added to the task";
         } else {
-           $msg= "No Data Found"; 
+            $_SESSION['msg'] = "User with this username not found!";
+            header("Location: /TaskManager/server/Task/TaskDetails.php?id=".$taskid."?UserNotFound");
         }
     }
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
  }
 ?>
