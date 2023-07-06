@@ -74,7 +74,7 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
             <form action="/TaskManager/server/database/AddUser.php?id=<?php echo $fetchData['taskid'] ?>" method="post">
                 <input id="email" type="email" class="form-control" placeholder="Enter Email" name="email" required>
                 <button type="submit" class="btn btn-success">Add another user</button>
-                <p><?php echo $_SESSION['msg']; ?></p>
+                <p><?php if(isset($_SESSION['msg'])){ echo $_SESSION['msg'];} ?></p>
             </form>
             <hr>
             <label for="actions"><b>Actions</b></label>
