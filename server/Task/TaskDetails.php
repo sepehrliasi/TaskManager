@@ -75,12 +75,12 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
 
             <div id="actions" style="display: flex; justify-content:space-between;">
                 <div style="display: flex; justify-content:space-between;">
-                    <a href="{% url 'items:edit' item_id=item.id %}">
+                    <a href="/TaskManager/server/Task/EditTask.php?id=<?php echo $data['taskid'] ?>">
                         <button class="btn btn-warning">Edit</button>
                     </a>
-                    <form action="{% url 'items:delete' item_id=item.id %}" method="post">
+                    <a href="/TaskManager/server/database/DeleteTask.php?id=<?php echo $data['taskid'] ?>">
                         <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    </a>
                 </div>
             </div>
             <hr>
