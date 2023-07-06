@@ -45,30 +45,10 @@ include("getTasks.php");
                         <th>Description</th>
                         <th>Begin Date</th>
                         <th>Deadline</th>
+                        <th>Status</th>
                         <th>Details</th>
                     </tr>
                 </thead>
-
-                <!-- <tbody>
-                    {% for item in items|paginate:request %}
-                    <tr>
-                        <th>{{ item.title }}</th>
-                        <th>{{ item.trade_type }}</th>
-                        <th>{{ item.available_to }}</th>
-                        <th>{{item.price }}</th>
-                        <th>
-                            <div style="display: flex; justify-content:space-between;">
-                                <a href="{% url 'items:bought_detail' item_id=item.id %}">
-                                    <button class="btn btn-info">See Details</button>
-                                </a>
-                                <a href="{% url 'users:create_support_ticket' %}">
-                                    <button class="btn btn-danger">Report</button>
-                                </a>
-                            </div>
-                        </th>
-                    </tr>
-                    {% endfor %}
-                </tbody> -->
 
                 <tbody>
                     <?php
@@ -82,10 +62,24 @@ include("getTasks.php");
                         <td><?php echo $data['description']??''; ?></td>
                         <td><?php echo $data['beginDate']??''; ?></td>
                         <td><?php echo $data['deadline']??''; ?></td>
+                        <td>
+                            <div id="actions" style="display: flex; justify-content:space-between;">
+                                <div style="display: flex; justify-content:space-between;">
+                                    <a href="/TaskManager/server/database/ToggleStatus.php?id=<?php echo $data['taskid'] ?>">
+                                        <button type="submit" class="btn btn-info">
+                                            <?php if ($data['isComplete'] == true){
+                                                echo "Completed";
+                                                }else{ echo "Ongoing";
+                                            }; ?>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
                         <th>
                             <div style="display: flex; justify-content:space-between;">
-                                <a href="{% url 'items:owner_detail' item_id=item.id %}">
-                                    <button class="btn btn-light">See Details</button>
+                                <a href="/TaskManager/server/Task/TaskDetails.php?id=<?php echo $data['taskid'] ?>">
+                                    <button class="btn btn-light">View</button>
                                 </a>
                                 <a href="{% url 'items:edit' item_id=item.id %}">
                                     <button class="btn btn-warning">Edit</button>
