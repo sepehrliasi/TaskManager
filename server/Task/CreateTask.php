@@ -7,12 +7,13 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $begin_time = $_POST['begin_time'];
 $deadline = $_POST['deadline'];
+$notificationDate = $_POST['notif_time'];
 
 $userid = $_SESSION['userid'];
 
 	// Inserting data into database
-    $sql = "INSERT INTO tasks (title, description, beginDate, deadline)
-    VALUES ('$title', '$description', '$begin_time', '$deadline')";
+    $sql = "INSERT INTO tasks (title, description, beginDate, deadline, notifDate)
+    VALUES ('$title', '$description', '$begin_time', '$deadline', '$notificationDate')";
     mysqli_query($conn, $sql);
     $id = mysqli_insert_id($conn);
 
