@@ -70,6 +70,13 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
                 </div>
             </div>
             <hr>
+            <?php if($fetchData['isComplete'] == false){ ?>
+                <label for="add_dep"><b>Add dependency to another task</b></label>
+                <a href="/TaskManager/server/task/DependencyTasks.php?id=<?php echo $fetchData['taskid'] ?>">
+                    <button type="submit" class="btn btn-dark">Add Dependency</button>
+                </a>
+            <hr>
+            <?php } ?>
             <label for="add_user"><b>Add another user to task</b></label>
             <form action="/TaskManager/server/database/AddUser.php?id=<?php echo $fetchData['taskid'] ?>" method="post">
                 <input id="email" type="email" class="form-control" placeholder="Enter Email" name="email" required>
