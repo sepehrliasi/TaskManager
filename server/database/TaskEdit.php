@@ -13,10 +13,10 @@ $notificationDate = $_POST['notif_time'];
 $userid = $_SESSION['userid'];
 
 	// Inserting data into database
-    $sql = "UPDATE tasks SET title='$title' and description='$description' and beginDate='$begin_time' and deadline='$deadline' and notifDate='$notificationDate'
+    $sql = "UPDATE tasks SET title='$title', description='$description', beginDate='$begin_time', deadline='$deadline', notifDate='$notificationDate'
     WHERE taskid='$taskid'";
     mysqli_query($conn, $sql);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header("Location:  /TaskManager/server/Task/TaskDetails.php?id=".$taskid);
 
 mysqli_close($conn);
 ?>
