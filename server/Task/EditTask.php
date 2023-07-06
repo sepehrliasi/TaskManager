@@ -1,5 +1,6 @@
 <?php
 session_start();
+include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,8 @@ session_start();
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="title"><b>🔴Title</b></label>
-                                <input id="title" type="text" class="form-control" placeholder="Enter name of the task" name="title" required>
+                                <input id="title" type="text" class="form-control" placeholder="Enter name of the task" name="title" required
+                                    value="<?php if(isset($fetchData['title'])){ echo $fetchData['title']; } ?>">
                                 <div class="invalid-feedback">Please enter Title!</div>
                             </div>
                         </div>
@@ -54,7 +56,8 @@ session_start();
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="description"><b>Description</b></label>
-                                <input id="description" type="textarea" class="form-control" placeholder="Enter description of the task" name="description">
+                                <input id="description" type="textarea" class="form-control" placeholder="Enter description of the task" name="description"
+                                    value="<?php if(isset($fetchData['description'])){ echo $fetchData['description']; } ?>">
                                 <div class="invalid-feedback">Must be less than 200 characters!</div>
                             </div>
                         </div>
@@ -64,7 +67,8 @@ session_start();
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="begin_time"><b>🔴Task begins on: </b></label>
-                                <input class="form-control" id="begin_time" type="date" placeholder="Enter begin date" name="begin_time" required>
+                                <input class="form-control" id="begin_time" type="date" placeholder="Enter begin date" name="begin_time" required
+                                    value="<?php if(isset($fetchData['beginDate'])){ echo $fetchData['beginDate']; } ?>">
                                 <div class="invalid-feedback">Please choose a valid date!</div>
                             </div>
                         </div>
@@ -72,7 +76,8 @@ session_start();
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="deadline"><b>🔴Deadline is: </b></label>
-                                <input class="form-control" id="deadline" type="date" placeholder="Enter deadline" name="deadline" required>
+                                <input class="form-control" id="deadline" type="date" placeholder="Enter deadline" name="deadline" required
+                                    value="<?php if(isset($fetchData['deadline'])){ echo $fetchData['deadline']; } ?>">
                                 <div class="invalid-feedback">Please choose a valid date!</div>
                             </div>
                         </div>
@@ -82,7 +87,8 @@ session_start();
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <label class="form-label" for="notif_time"><b>Notification Date: </b></label>
-                                <input class="form-control" id="notif_time" type="date" placeholder="Enter begin date" name="notif_time">
+                                <input class="form-control" id="notif_time" type="date" placeholder="Enter begin date" name="notif_time"
+                                    value="<?php if(isset($fetchData['notifDate'])){ echo $fetchData['notifDate']; } ?>">
                                 <div class="invalid-feedback">Please choose a valid date!</div>
                             </div>
                         </div>
