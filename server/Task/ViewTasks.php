@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("getTasks.php");
 ?>
 <!DOCTYPE html>
@@ -12,6 +13,26 @@ include("getTasks.php");
 </head>
 
 <body>
+    <div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding-top: 15px; padding-bottom: 15px;">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TaskManager/server/Task/viewTasks.php">My Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TaskManager/client/Task/CreateTask.html">Create Task</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TaskManager/client/user/EditProfile.html">Edit Profile</a>
+                    </li>
+                    <a href="/TaskManager/server/user/logout.php">
+                        <button class="btn btn-danger">Logout</button>
+                    </a>
+            </div>
+        </nav>
+    </div>
+
     <div class="container-sm p-4 my-3 bg-dark text-white" style="border-radius: 5px;">
         <div class="container my-5">
             <h3>📌My Tasks</h3>
@@ -19,6 +40,7 @@ include("getTasks.php");
             <table class="table table-dark table-striped table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th>Row number</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Begin Date</th>
@@ -58,8 +80,21 @@ include("getTasks.php");
                         <td><?php echo $sn; ?></td>
                         <td><?php echo $data['title']??''; ?></td>
                         <td><?php echo $data['description']??''; ?></td>
-                        <td><?php echo $data['begin_time']??''; ?></td>
+                        <td><?php echo $data['beginDate']??''; ?></td>
                         <td><?php echo $data['deadline']??''; ?></td>
+                        <th>
+                            <div style="display: flex; justify-content:space-between;">
+                                <a href="{% url 'items:owner_detail' item_id=item.id %}">
+                                    <button class="btn btn-light">See Details</button>
+                                </a>
+                                <a href="{% url 'items:edit' item_id=item.id %}">
+                                    <button class="btn btn-warning">Edit</button>
+                                </a>
+                                <form action="{% url 'items:delete' item_id=item.id %}" method="post">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </th>
                        </tr>
                        <?php
                         $sn++;

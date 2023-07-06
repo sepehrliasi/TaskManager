@@ -1,12 +1,14 @@
 <?php
-session_start();
 include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/confdb.php";
 
 $db= $conn;
-$myUserId = $_SESSION['userid'];
-$fetchData = fetch_data($db);
+if(isset($_SESSION['userid'])){
+    $myUserId = $_SESSION['userid'];
+}
 
-function fetch_data($db){
+$fetchData = fetch_data($db, $myUserId);
+
+function fetch_data($db, $myUserId){
  if(empty($db)){
   $msg= "Database connection error";
  }elseif(empty("tasks")){
