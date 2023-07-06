@@ -92,6 +92,15 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/getTask.php";
                                 <div class="invalid-feedback">Please choose a valid date!</div>
                             </div>
                         </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="priority"><b>Priority </b></label>
+                                <input class="form-control" id="priority" type="text" placeholder="Enter a digit from 0 to 3" name="priority" pattern="[0-3]{1}"
+                                    value="<?php if(isset($fetchData['priority'])){ echo $fetchData['priority']; } ?>">
+                                <div class="invalid-feedback">Please enter a digit from 0 to 3!</div>
+                            </div>
+                        </div>
                     </div>
                     <hr>
     
