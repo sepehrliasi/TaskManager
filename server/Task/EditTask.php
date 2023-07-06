@@ -1,6 +1,5 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/TaskEdit.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +89,7 @@ include $_SERVER['DOCUMENT_ROOT']."/TaskManager/server/database/TaskEdit.php";
                     </div>
                     <hr>
     
-                    <button type="submit" id="submit" class="btn btn-success" style="width: 100%;">Create</button>
+                    <button type="submit" id="submit" class="btn btn-success" style="width: 100%;">Edit</button>
     
       
                   </form>
